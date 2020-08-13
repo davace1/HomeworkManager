@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Name}}</title>
+</head>
+<body>
+作业{{.Name}}的详细信息:
+作业名{{.Name}},作业截止时间{{.EndTime.Format "2006-1-2 15:04:05" }}<br>
+作业创建时间:{{.BeginTime.Format "2006-1-2 15:04:05" }}, 备注信息:{{.Text}}
+作业已提交数量：{{.GetUpdateNum}}<br>
+作业上传链接: {{.UpdateURL}}
+{{/*    老铁帮我加个点击复制的功能*/}}
+
+<form action="/delete?workid={{.WorkID}}" method="post" enctype="application/x-www-form-urlencoded">
+    <input type="submit" value="删除作业"> <br>
+</form>
+
+<form action="/change?workid={{.WorkID}}" method="post" enctype="application/x-www-form-urlencoded">
+    <input type="submit" value="修改信息"><br>
+</form>
+{{/*    {{/*检查作业是否截止 截止开放下载*/}}
+{{if .GetUpdateNum}}
+    {{/*    无人上传不能下载*/}}
+    {{if .IsEnd}}
+        <form action="/download?workid={{.WorkID}}" method="post" enctype="application/x-www-form-urlencoded">
+            <input type="submit" value="下载作业"><br>
+        </form>
+    {{else}}
+        到达截止时间时，即可下载文件<br>
+    {{end}}
+    {{else}}
+        无人提交,不能下载
+{{end}}
+</body>
+</html>
+

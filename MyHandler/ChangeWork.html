@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改作业</title>
+</head>
+<body>
+作业{{.Name}}的信息，请修改对应内容:
+<form action="/acceptChange?workid={{.WorkID}}" method="post" enctype="application/x-www-form-urlencoded">
+    请确保作业名无重复
+    作业名:        <input type="text" name="name" value="{{.Name}}"><br>
+    作业截止时间:   <input type="date" name="endtime" value="{{.EndTime.Format "2006-1-2"}}"><br>
+    备注信息:      <input type="text" name="text" value="{{.Text}}"><br>
+            <input type="submit" value="提交修改">
+</form>
+
+</body>
+</html>

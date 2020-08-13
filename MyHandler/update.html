@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提交{{.Name}}</title>
+</head>
+<body>
+    欢迎提交作业{{.Name}}:
+    请注意文件命名，多文件请压缩为压缩包
+    <form action="/acceptUpdate?workid={{.WorkID}}" method="post" enctype="multipart/form-data" >
+        <input type="text" name="name" value="文件名"><br>
+        <input type="file" name="file">
+        <input type="submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎使用</title>
+</head>
+<body>
+    欢迎使用作业管家：<br>
+    发布新的作业<form action="/newWork" method="post" enctype="application/x-www-form-urlencoded"> <input type="submit" value="新建作业"></form><br>
+    现有的作业:<br>
+    {{range .}}
+    作业编号：{{.WorkID}},作业名称:<span>{{.Name}},作业结束时间:{{.EndTime.Format "2006-1-2 15:04:05" }}</span>,备注:{{.Text}}  <form action="/work?id={{.WorkID}}" method="post" enctype="application/x-www-form-urlencoded"><input type="submit" value="详细信息" ></form><br>
+    {{end}}
+</body>
+</html>
